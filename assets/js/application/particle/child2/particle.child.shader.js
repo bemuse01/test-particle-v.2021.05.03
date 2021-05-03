@@ -40,8 +40,8 @@ export default {
             uniform float time;
             uniform float random;
             uniform float height;
-            uniform float x;
-            uniform float y;
+            // uniform float x;
+            // uniform float y;
 
             const float PI = 3.1415926535897932384626433832795;
             const float RADIAN = PI / 180.0;
@@ -66,8 +66,8 @@ export default {
                 }else{ 
                     // m.x = rand(uv * random * .1) * 2.0 - 1.0;
                     // m.y = rand(uv * random * .2) * 2.0 - 1.0;
-                    m.x = x;
-                    m.y = y;
+                    m.x = cos(time * 0.003) * 200.0;
+                    m.y = sin(time * 0.006) * 100.0;
                     m.z = rand(uv * random * .3) * 2.0 - 1.0;
                     m.w = rand(uv * random * .4) * -1.0;
                 }
