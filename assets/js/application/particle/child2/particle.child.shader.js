@@ -40,6 +40,11 @@ export default {
             uniform float time;
             uniform float random;
             uniform float height;
+            uniform float x;
+            uniform float y;
+
+            const float PI = 3.1415926535897932384626433832795;
+            const float RADIAN = PI / 180.0;
 
             float rand(vec2 co){
                 return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
@@ -59,8 +64,10 @@ export default {
                     m.y += m.w;
                     m.w += l.y;
                 }else{ 
-                    m.x = rand(uv * random * .1) * 2.0 - 1.0;
-                    m.y = rand(uv * random * .2) * 2.0 - 1.0;
+                    // m.x = rand(uv * random * .1) * 2.0 - 1.0;
+                    // m.y = rand(uv * random * .2) * 2.0 - 1.0;
+                    m.x = x;
+                    m.y = y;
                     m.z = rand(uv * random * .3) * 2.0 - 1.0;
                     m.w = rand(uv * random * .4) * -1.0;
                 }
