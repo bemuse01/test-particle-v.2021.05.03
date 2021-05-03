@@ -46,6 +46,9 @@ export default {
             }
 
             void main(){
+                vec2 pixel = 1.0 / resolution.xy;
+                vec2 uv = gl_FragCoord.xy / resolution.xy;
+
                 ivec2 xy = ivec2(gl_FragCoord.xy);
 
                 vec4 m = texelFetch(pos, xy, 0);
@@ -55,13 +58,11 @@ export default {
                     m.x += m.z;
                     m.y += m.w;
                     m.w += l.y;
-                }
-                // need to modify hear
-                else{ 
-                    m.x = rand(vec2(m.x, time * 0.1)) * 2.0 - 1.0;
-                    m.y = rand(vec2(m.y, time * 0.2)) * 2.0 - 1.0;
-                    m.z = rand(vec2(m.z, time * 0.3)) * 2.0 - 1.0;
-                    m.w = rand(vec2(m.w, time * 0.4)) * -1.0;
+                }else{ 
+                    m.x = rand(uv * random * .1) * 2.0 - 1.0;
+                    m.y = rand(uv * random * .2) * 2.0 - 1.0;
+                    m.z = rand(uv * random * .3) * 2.0 - 1.0;
+                    m.w = rand(uv * random * .4) * -1.0;
                 }
 
                 gl_FragColor = m;
@@ -74,17 +75,24 @@ export default {
     life: {
         fragment: `
             uniform float lifeVel;
-            uniform int randX;
-            uniform int randY;
+            uniform float random;
             uniform float height;
 
+            float rand(vec2 co){
+                return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+            }
+
             void main(){
+                vec2 pixel = 1.0 / resolution.xy;
+                vec2 uv = gl_FragCoord.xy / resolution.xy;
+
                 ivec2 xy = ivec2(gl_FragCoord.xy);
 
                 vec4 m = texelFetch(pos, xy, 0);
                 vec4 l = texelFetch(life, xy, 0);
+                float chance = rand(uv * random);
 
-                if(xy.x == randX && xy.y == randY && l.x <= 0.0){
+                if(chance > 0.99 && l.x <= 0.0){
                     l.x = 1.0;
                 }
 

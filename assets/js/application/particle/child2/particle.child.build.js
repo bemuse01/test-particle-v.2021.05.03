@@ -42,8 +42,7 @@ export default class{
         this.posUniforms['random'] = {value: 0.0}
         this.posUniforms['height'] = {value: this.size.obj.h / 2}
         this.lifeUniforms['lifeVel'] = {value: PARAM.lifeVel}
-        this.lifeUniforms['randX'] = {value: 0.0}
-        this.lifeUniforms['randY'] = {value: 0.0}
+        this.lifeUniforms['random'] = {value: 0.0}
         this.lifeUniforms['height'] = {value: this.size.obj.h / 2}
 
         this.gpuCompute.init()
@@ -98,8 +97,7 @@ export default class{
 
         this.posUniforms['time'].value = time
         this.posUniforms['random'].value = Math.random()
-        this.lifeUniforms['randX'].value = Math.floor(Math.random() * 100)
-        this.lifeUniforms['randY'].value = Math.floor(Math.random() * 100)
+        this.lifeUniforms['random'].value = Math.random()
 
         this.mesh.material.uniforms['u_life'].value = this.gpuCompute.getCurrentRenderTarget(this.lifeVariable).texture
         this.mesh.material.uniforms['u_pos'].value = this.gpuCompute.getCurrentRenderTarget(this.posVariable).texture
