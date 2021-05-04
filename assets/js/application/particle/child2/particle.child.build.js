@@ -41,8 +41,8 @@ export default class{
         this.posUniforms['time'] = {value: 0.0}
         this.posUniforms['random'] = {value: 0.0}
         this.posUniforms['height'] = {value: this.size.obj.h / 2}
-        this.posUniforms['x'] = {value: 0.0}
-        this.posUniforms['y'] = {value: 0.0}
+        // this.posUniforms['x'] = {value: 0.0}
+        // this.posUniforms['y'] = {value: 0.0}
         this.lifeUniforms['lifeVel'] = {value: PARAM.lifeVel}
         this.lifeUniforms['random'] = {value: 0.0}
         this.lifeUniforms['height'] = {value: this.size.obj.h / 2}
@@ -101,8 +101,8 @@ export default class{
         this.posUniforms['random'].value = Math.random()
         this.lifeUniforms['random'].value = Math.random()
 
-        this.posUniforms['x'].value = Math.cos(time * 0.003) * 200
-        this.posUniforms['y'].value = Math.sin(time * 0.006) * 100
+        // this.posUniforms['x'].value = Math.cos(time * 0.003) * 200
+        // this.posUniforms['y'].value = Math.sin(time * 0.006) * 100
 
         this.mesh.material.uniforms['u_life'].value = this.gpuCompute.getCurrentRenderTarget(this.lifeVariable).texture
         this.mesh.material.uniforms['u_pos'].value = this.gpuCompute.getCurrentRenderTarget(this.posVariable).texture
