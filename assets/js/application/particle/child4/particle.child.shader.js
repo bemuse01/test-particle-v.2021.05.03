@@ -178,7 +178,7 @@ export default {
                 vec4 m = texelFetch(pos, xy, 0);
                 vec4 l = texelFetch(life, xy, 0);
 
-                float n = snoise(vec3(fxy, time * 0.0001));
+                float n = snoise(vec3(fxy * 0.1, time * 0.0001));
                 float x = cos(n) * 4.0;
                 float y = sin(n) * 4.0;
 
