@@ -1,9 +1,9 @@
 import * as THREE from '../../lib/three.module.js'
 import PARAM from './particle.param.js'
 // import CHILD from './child/particle.child.build.js'
-// import CHILD from './child2/particle.child.build.js'
+import CHILD from './child2/particle.child.build.js'
 // import CHILD from './child3/particle.child.build.js'
-import CHILD from './child4/particle.child.build.js'
+// import CHILD from './child4/particle.child.build.js'
 
 export default class{
     constructor(app){
