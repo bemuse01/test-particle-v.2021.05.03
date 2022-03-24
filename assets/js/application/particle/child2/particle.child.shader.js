@@ -95,7 +95,7 @@ export default {
 
                 ivec2 xy = ivec2(gl_FragCoord.xy);
 
-                vec4 m = texelFetch(pos, xy, 0);
+                // vec4 m = texelFetch(pos, xy, 0);
                 vec4 l = texelFetch(life, xy, 0);
                 float chance = rand(uv * random);
 
